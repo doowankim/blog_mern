@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const userModel = require('../../model/user');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -67,7 +68,20 @@ router.post('/login', (req, res) => {
                    .compare(req.body.password, user.password)
                    .then(isMatch => {
                        if(isMatch) {
-                           return res.json({ msg: 'Success'});
+                           //token에 들어갈 내용 상수화
+                           const payload = { id: user.id, name: user.name, avatar: user.avatar };
+                           //token 생성
+                           jwt.sign(
+                               payload,
+                               process.env.SECRET,
+                               { expiresIn: 36000 },
+                               (err, token) => {
+                                   res.json({
+                                       success: true,
+                                       tokenInfo: 'Bearer ' + token
+                                   });
+                               }
+                           )
                        } else {
                            res.status(400).json({
                                msg: 'password incorrect'
