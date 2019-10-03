@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 인증을 한다
 
-
+const validateRegisterInput = require('../../validation/register');
 
 
 // @route POST localhost:3200/users/signup
@@ -15,13 +15,23 @@ const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 
 // @access Public
 router.post('/signup', (req, res) => {
 
+    const { errors, isValid } = validateRegisterInput(req.body); //사용자 입력값이 들어가면 errors, isValid로 아웃풋이 나옴
+
+    //check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     userModel
         .findOne({ email: req.body.email}) //findById = id만 검색, findOne = id를 제외하고 나머지를 검색
         .then(user => {
             if(user) {
-                return res.json({
-                    email: 'Email already exists'
-                });
+
+                errors.msg = 'Email already exists';
+                return res.json(errors);
+                // return res.json({
+                //     email: 'Email already exists'
+                // });
             } else {
                 // avatar 생성
                 const avatar = gravatar.url(req.body.email, { //기본이미지에 kevin이라고 하면 k를 이미지
@@ -109,5 +119,9 @@ router.get('/current', authCheck, (req, res) => {
     });
 
 });
+
+//total user data
+
+//user delete
 
 module.exports = router;
