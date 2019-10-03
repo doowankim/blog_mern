@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    avatar: {
+    avatar: { //프로필 이미지(자동으로 생성되게 할거임), npm install gravatar
         type: String
     },
     date: {
