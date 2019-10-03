@@ -50,5 +50,35 @@ router.post('/signup', (req, res) => {
 
 });
 
+// @route POST localhost:3200/users/login
+// @desc user login /return jwt
+// @access Public
+router.post('/login', (req, res) => {
+   //email이 있는지 없는지-> password 매칭-> 화면에 뿌려줌(return jwt)
+    userModel
+       .findOne({email: req.body.email})
+       .then(user => {
+           if(!user){
+               return res.json({
+                   msg: 'user not found'
+               });
+           } else {
+               bcrypt
+                   .compare(req.body.password, user.password)
+                   .then(isMatch => {
+                       if(isMatch) {
+                           return res.json({ msg: 'Success'});
+                       } else {
+                           res.status(400).json({
+                               msg: 'password incorrect'
+                           });
+                       }
+                   })
+                   .catch(err => res.json(err));
+           }
+       })
+       .catch(err => res.json(err));
+});
+
 
 module.exports = router;
