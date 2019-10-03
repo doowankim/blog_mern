@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const userModel = require('../../model/user');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 인증을 한다
 
 
 
@@ -94,5 +96,18 @@ router.post('/login', (req, res) => {
        .catch(err => res.json(err));
 });
 
+
+// @route GET localhost:3200/users/current
+// @desc return current user
+// @access Private
+router.get('/current', authCheck, (req, res) => {
+
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+    });
+
+});
 
 module.exports = router;
