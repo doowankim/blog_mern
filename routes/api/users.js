@@ -8,6 +8,7 @@ const passport = require('passport');
 const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 인증을 한다
 
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 
 // @route POST localhost:3200/users/signup
@@ -67,14 +68,23 @@ router.post('/signup', (req, res) => {
 // @desc user login /return jwt
 // @access Public
 router.post('/login', (req, res) => {
+
+    const {errors, isValid} = validateLoginInput(req.body);
+
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
+
    //email이 있는지 없는지-> password 매칭-> 화면에 뿌려줌(return jwt)
     userModel
        .findOne({email: req.body.email})
        .then(user => {
            if(!user){
-               return res.json({
-                   msg: 'user not found'
-               });
+               errors.msg = 'user not found';
+               return res.json(errors);
+               // return res.json({
+               //     msg: 'user not found'
+
            } else {
                bcrypt
                    .compare(req.body.password, user.password)
@@ -95,9 +105,11 @@ router.post('/login', (req, res) => {
                                }
                            )
                        } else {
-                           res.status(400).json({
-                               msg: 'password incorrect'
-                           });
+                           errors.msg = 'password incorrect';
+                           return res.json(errors);
+                           // res.status(400).json({
+                           //     msg: 'password incorrect'
+                           // });
                        }
                    })
                    .catch(err => res.json(err));
@@ -122,6 +134,35 @@ router.get('/current', authCheck, (req, res) => {
 
 //total user data
 
+// @route GET localhost:3200/users/total
+// @desc total user
+// @access Private
+router.get('/total', authCheck, (req, res) => {
+    userModel
+        .find()
+        .then(users => {
+            res.status(200).json({
+                msg: 'Successful total users',
+                count: users.length,
+                users: users
+            });
+        })
+        .catch(err => res.json(err));
+});
+
 //user delete
 
+// @route DELETE localhost:3200/users/delete/:userId
+// @desc delete user
+// @access Private
+router.delete('/delete/:userId', authCheck, (req, res) => {
+    userModel
+        .remove({_id: req.params.userId})
+        .then(result => {
+            res.status(200).json({
+                msg: 'Successful delete id'
+            });
+        })
+        .catch(err => res.json(err));
+});
 module.exports = router;
