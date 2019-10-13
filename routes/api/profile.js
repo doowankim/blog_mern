@@ -3,6 +3,7 @@ const router = express.Router();
 const profileModel = require('../../model/profile');
 const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
+const validateEducationInput = require('../../validation/education');
 const authCheck = passport.authenticate('jwt', { session: false });
 
 // @route GET localhost:3200/total
@@ -119,6 +120,47 @@ router.post('/', authCheck, (req, res) => {
             }
         })
         .catch(err => res.json(err));
+
+});
+
+// @route POST localhost:3200/profile/education
+// @desc add education to profile
+// @access Private
+router.post('/education', authCheck, (req, res) => {
+    const {errors, isValid} = validateEducationInput(req.body);
+    if(!isValid){
+        return res.json(errors);
+    }
+    profileModel
+        .findOne({user: req.user.id})
+        .then(profile => {
+            if(!profile){
+                errors.msg = 'no user'
+                return res.json(errors);
+            } else {
+                const newEdu = { //사용자 입력값 상수화
+                    school: req.body.school,
+                    degree: req.body.degree,
+                    fieldofstudy: req.body.fieldofstudy,
+                    from: req.body.from,
+                    to: req.body.to,
+                    current: req.body.current,
+                    description: req.body.description
+                };
+                profile.education.unshift(newEdu); //profile안에 education에 최신순으로 밀어넣는다 unshift(최신순)
+                profile
+                    .save()
+                    .then(profile => res.json(profile))
+                    .catch(err => res.json(err));
+            }
+        })
+        .catch(err => res.json(err));
+});
+
+// @route POST localhost:3200/profile/exprience
+// @desc add exprience to profile
+// @access Private
+router.post('/exprience', authCheck, (req, res) => {
 
 });
 

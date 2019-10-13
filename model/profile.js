@@ -59,7 +59,34 @@ const profileSchema = new mongoose.Schema({
         type: String
     },
     experience: [
-
+        {
+            title: {
+                type: String,
+                required: true
+            },
+            company: {
+                type: String,
+                required: true
+            },
+            location: {
+                type: String,
+                required: true
+            },
+            from: {
+                type: Date,
+                required: true
+            },
+            to: {
+                type: Date
+            },
+            current: {
+                type: Boolean,
+                defalut: false
+            },
+            description: {
+                type: String
+            }
+        }
     ],
     education: [
         {
