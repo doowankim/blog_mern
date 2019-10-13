@@ -1,0 +1,77 @@
+// const mongoose = require('mongoose');
+// const userSchema = mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//     },
+//     email: {
+//         type: String,
+//         required: true
+//     },
+//     password: {
+//         type: String,
+//         required: true
+//     },
+//     avatar: { //프로필 이미지(자동으로 생성되게 할거임), npm install gravatar
+//         type: String
+//     },
+//     date: {
+//         type: Date,
+//         default: Date.now //필수 값은 아니지만 안맞다면 현재시간으로 맞춰줌
+//     }
+// });
+//
+// module.exports = mongoose.model('user', userSchema);
+
+const mongoose = require('mongoose');
+const profileSchema = new mongoose.Schema({
+
+    user: {
+        type: mongoose.Schema.Types.ObjectId, // users의 내용에 있는 id가 들어간다.
+        ref: 'users'
+    },
+    handle: { //문구(자기소개)
+        type: String,
+        required: true,
+        max: 40
+    },
+    company: {
+        type: String
+    },
+    website: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    status: { //필수요
+        type: String,
+        required: true
+    },
+    skills: {
+        type: [String], //여러가지 언어를 사용할 수도 있기 때문에 배열
+        required: true
+    },
+    bio: {
+        type: String
+    },
+    githubusername: {
+        type: String
+    },
+    experience: [
+
+    ],
+    education: [
+
+    ],
+    social: {
+
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+
+});
+
+module.exports = mongoose.model('profile', profileSchema);
