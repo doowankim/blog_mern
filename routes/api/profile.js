@@ -2,22 +2,76 @@ const express = require('express');
 const router = express.Router();
 const profileModel = require('../../model/profile');
 const passport = require('passport');
+const validateProfileInput = require('../../validation/profile');
 const authCheck = passport.authenticate('jwt', { session: false });
 
-// @route GET localhost:3200/profile
-// @desc Tests profile route
+// @route GET localhost:3200/total
+// @desc Tests profile total
 // @access Public
 
-router.get('/', (req, res) => {
-    res.status(200).json({
-        msg: 'Successful profileRoutes'
-    });
+router.get('/total', (req, res) => {
+    profileModel
+        .find()
+        .then(users => {
+            res.status(200).json({
+                msg: 'total users profile',
+                count: users.length,
+                users: users
+            });
+        })
+        .catch(err => res.json(err));
 });
+
+// @route GET localhost:3200/profile/:profile_id
+// @desc detail profile get
+// @access Private
+router.get('/:profile_id',authCheck, (req, res) => {
+    const id = req.params.profile_id;
+    profileModel
+        .findById(id)
+        .then(profile => {
+            if(!profile){
+                return res.json({msg: 'There is no frofile for this user'});
+            } else {
+                res.json(profile);
+            }
+        })
+        .catch(err => res.json(err));
+});
+
+// @route GET localhost:3200/profile/handle/:handle
+// @desc GET profile by handle
+// @access Private & Public
+// 검색기능(원하는 사용자를 쉽게 찾기 위함)
+router.get('/handle/:handle',authCheck, (req, res) => {
+    profileModel
+        .findOne({handle: req.params.handle})
+        .then(profile => {
+            if(!profile){
+                return res.json({
+                    noprofile : 'There is no profile for this user'
+                });
+            } else {
+                res.json(profile);
+            }
+        })
+        .catch(err => res.json(err));
+});
+
+
+
+
 
 // @route POST localhost:3200/profile
 // @desc register profile
 // @access Private
 router.post('/', authCheck, (req, res) => {
+
+    const {errors, isValid} = validateProfileInput(req.body);
+    if(!isValid){
+        return res.json(errors);
+    }
+
     const profileFields = {}; //아래 내용이 profileFields에 저장됨
     profileFields.user = req.user.id; //payload에 있는 내용 중 id
     // 사용자입력값으로 들어감
