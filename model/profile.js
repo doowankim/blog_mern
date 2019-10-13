@@ -62,7 +62,34 @@ const profileSchema = new mongoose.Schema({
 
     ],
     education: [
-
+        {
+            school: {
+                type: String,
+                required: true
+            },
+            degree: {
+                type: String,
+                required: true
+            },
+            fieldofstudy: {
+                type: String,
+                required: true
+            },
+            from: {
+                type: Date,
+                required: true
+            },
+            to: {
+                type: Date
+            },
+            current: {
+                type: Boolean, //true: 재학중, false: 졸업 (Boolean은 참,거짓)
+                default: false
+            },
+            description: {
+                type: String
+            }
+        }
     ],
     social: {
 
