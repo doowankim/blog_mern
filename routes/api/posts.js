@@ -12,7 +12,7 @@ const validatePostInput = require('../../validation/post');
 // @desc Tests posts route
 // @access Private
 
-router.post('/', authCheck, uploads.single('attachedfile'), (req, res) => {
+router.post('/', authCheck, (req, res) => {
     const {errors, isValid} = validatePostInput(req.body);
     if(!isValid){
         return res.json(errors);
@@ -21,8 +21,8 @@ router.post('/', authCheck, uploads.single('attachedfile'), (req, res) => {
         text: req.body.text,
         name: req.user.name,
         avatar: req.user.avatar,
-        user: req.user.id,
-        attachedfile: req.file.path
+        user: req.user.id
+//         attachedfile: req.file.path
     });
 
     newPost
@@ -30,6 +30,8 @@ router.post('/', authCheck, uploads.single('attachedfile'), (req, res) => {
         .then(post => res.json(post))
         .catch(err => res.json(err));
 });
+
+
 // @route GET localhost:3200/posts/total
 // @desc get posts
 // @access Private & Public
@@ -122,5 +124,81 @@ router.post('/unlike/:postId', authCheck, (req, res) => {
             .catch(err=> res.json(err));
     })
 });
+
+// @route POST localhost:3200/posts/comment/:postId
+// @desc add comment to post
+// @access Private
+router.post('/comment/:postId', authCheck, (req, res) => {
+    const {errors, isValid} = validatePostInput(req.body);
+    if(!isValid){
+        return res.json(errors);
+    }
+    postModel
+        .findById(req.params.postId)
+        .then(post => {
+            if(!post){
+                return res.json({msg: 'no post'});
+            }
+            //사용자 입력값 상수화
+            const newComment = {
+                text: req.body.text,
+                name: req.user.name,
+                avatar: req.user.avatar,
+                user: req.user.id
+            };
+            post.comments.unshift(newComment);
+            post
+                .save()
+                .then(post => res.json(post));
+        })
+        .catch(err => res.json(err));
+});
+
+// @route DELETE localhost:3200/posts/comment/:postId/:commentId
+// @desc delete comment from post
+// @access Private
+router.delete('/comment/:postId/:commentId', authCheck, (req, res) => {
+    postModel
+        .findById(req.params.postId)
+        .then(post => {
+            if(post.comments.filter(comment => comment._id.toString() === req.params.commentId).length === 0) {
+                return res.status(400).json({ msg: 'Comment does not exist' });
+            }
+            //삭제(배열)
+            const removeIndex = post.comments
+                .map(item => item._id.toString()) //_id를 toString으로 바꿔줌
+                .indexOf(req.params.commentId)
+                //잘라내기
+            post.comments.splice(removeIndex, 1);
+            post
+                .save()
+                .then(post => {
+                    res.json(post)
+                });
+        });
+});
+
+// @route DELETE localhost:3200/posts/:postId
+// @desc delete post
+// @access Private
+router.delete('/:postId', authCheck, (req, res) => {
+    profileModel
+        .findOne({ user: req.user.id })
+        .then(profile => {
+            postModel
+                .findById(req.params.postId)
+                .then(post => {
+                    //req.user.id(token의 userid랑 post에 있는 아이디와 매칭)
+                    if(post.user.toString() !== req.user.id) {
+                        return res.json({msg: 'User not authorized'});
+                    }
+                    post
+                        .remove()
+                        .then(() => res.json({msg: 'Successful delete post'}));
+                })
+                .catch(err => res.json(err));
+        });
+});
+
 
 module.exports = router;
