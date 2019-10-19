@@ -50,7 +50,7 @@ const postingSchema = mongoose.Schema({
         }
     ],
     comments: [
-        
+
     ],
     date: {
         type: Date,
