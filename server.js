@@ -25,7 +25,6 @@ require('./config/passport')(passport); //passport의 기본으로 쓰겠다 (�
 
 
 
-
 app.use('/posts', postRoutes);
 app.use('/profile', profileRoutes);
 app.use('/users', userRoutes);

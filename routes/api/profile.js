@@ -4,6 +4,7 @@ const profileModel = require('../../model/profile');
 const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
 const validateEducationInput = require('../../validation/education');
+const validateExperienceInput = require('../../validation/experience');
 const authCheck = passport.authenticate('jwt', { session: false });
 
 // @route GET localhost:3200/total
@@ -157,12 +158,79 @@ router.post('/education', authCheck, (req, res) => {
         .catch(err => res.json(err));
 });
 
-// @route POST localhost:3200/profile/exprience
-// @desc add exprience to profile
+// @route POST localhost:3200/profile/experience
+// @desc add experience to profile
 // @access Private
-router.post('/exprience', authCheck, (req, res) => {
+router.post('/experience', authCheck, (req, res) => {
+    const {errors, isValid} = validateExperienceInput(req.body);
 
+    if(!isValid){
+        return res.json(errors);
+    }
+    profileModel
+        .findOne({user: req.user.id})
+        .then(profile => {
+            if(!profile){
+                errors.msg = 'no user'
+                return res.json(errors);
+            } else{
+                const newExp = {
+                    title: req.body.title,
+                    company: req.body.company,
+                    location: req.body.location,
+                    from: req.body.from,
+                    to: req.body.to,
+                    current: req.body.current,
+                    description: req.body.description
+                };
+                profile.experience.unshift(newExp);
+                profile
+                    .save()
+                    .then(profile => res.json(profile))
+                    .catch(err => res.json(err));
+            }
+        })
+        .catch(err => res.json(err));
 });
 
+// @route DELETE localhost:3200/profile/experience/:experienceId
+// @desc delete experience to profile
+// @access Private
+router.delete('/education/:educationId', authCheck, (req, res) => {
+    profileModel
+        .findOne({ user: req.user.id })
+        .then(profile => {
+            const removeIndex = profile.education
+                .map(item => item.id)
+                .indexOf(req.params.educationId);
+            profile.education
+                .splice(removeIndex, 1);
+            profile
+                .save()
+                .then(profile => res.json(profile))
+                .catch(err => res.json(err));
+        })
+        .catch(err => res.json(err));
+});
+
+// @route DELETE localhost:3200/profile/experience/:experienceId
+// @desc delete experience to profile
+// @access Private
+router.delete('/experience/:experienceId', authCheck, (req, res) => {
+    profileModel
+        .findOne({ user: req.user.id })
+        .then(profile => {
+            const removeIndex = profile.experience
+                .map(item => item.id) //여러개의 항목을 하나로 만드는 것
+                .indexOf(req.params.experienceId); //여러개 항목중에 id만 선택해서 삭제하겠다는 뜻(포인팅)
+            profile.experience
+                .splice(removeIndex, 1); // 1개만 삭제한다는 뜻
+            profile
+                .save()
+                .then(profile => res.json(profile))
+                .catch(err => res.json(err));
+        })
+        .catch(err => res.json(err));
+});
 
 module.exports = router;
