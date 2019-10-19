@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postModel = require('../../model/post');
+const profileModel = require('../../model/profile');
 const passport = require('passport');
 const authCheck = passport.authenticate('jwt', { session: false });
 const multer = require('multer'); //attachedfile 매니지먼트 (이미지만 들어가야 함)
@@ -45,6 +46,10 @@ router.get('/total', (req, res) => {
         .catch(err => res.json(err));
 });
 
+
+
+
+
 // @route GET localhost:3200/posts/:postId
 // @desc get detail posts
 // @access Private
@@ -62,6 +67,29 @@ router.get('/:postId', authCheck, (req, res) => {
             }
         })
         .catch(err => res.json(err));
+});
+// @route POST localhost:3200/posts/like/:postId
+// @desc like post
+// @access Private
+router.post('/like/:postId', authCheck, (req, res) =>{
+    profileModel
+        .findOne({ user: req.user.id }) //profileModel의 누구인지 체크
+        .then(profile => {
+            postModel
+                .findById(req.params.postId)
+                .then(post => {
+                    if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0 ) {
+                        return res.status(400).json({
+                            msg: 'User already liked this post'
+                        });
+                    }
+                    post.likes.unshift({ user: req.user.id });
+                    post
+                        .save()
+                        .then(post => res.json(post));
+                })
+                .catch(err => res.json(err));
+        });
 });
 
 module.exports = router;
