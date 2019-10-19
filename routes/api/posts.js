@@ -78,6 +78,7 @@ router.post('/like/:postId', authCheck, (req, res) =>{
             postModel
                 .findById(req.params.postId)
                 .then(post => {
+                //좋아요를 누른 경우
                     if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0 ) {
                         return res.status(400).json({
                             msg: 'User already liked this post'
@@ -90,6 +91,36 @@ router.post('/like/:postId', authCheck, (req, res) =>{
                 })
                 .catch(err => res.json(err));
         });
+});
+
+// @route POST localhost:3200/posts/unlike/:postId
+// @desc unlike post
+// @access Private
+router.post('/unlike/:postId', authCheck, (req, res) => {
+    profileModel
+    .findOne({ user: req.user.id })
+    .then(profile => {
+        postModel
+            .findById(req.params.postId)
+            .then(post => {
+            // 좋아요를 하지 않은 경우
+                if(post.likes.filter(like => like.user.toString() === req.user.id).length === 0 ) {
+                    return res.status(400).json({
+                        msg: 'You have not liked this post'
+                    });
+                }
+                const removeIndex = post.likes
+                    .map(item => item.user.toString()) //user가 객체이기 때문에 string타입으로 바꿔줌
+                    .indexOf(req.user.id);
+                    //없애준것
+                    post.likes.splice(removeIndex, 1);
+                    //저장
+                    post
+                        .save()
+                        .then(post => res.json(post));
+            })
+            .catch(err=> res.json(err));
+    })
 });
 
 module.exports = router;
