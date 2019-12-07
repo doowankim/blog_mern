@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Register extends Component {
     
@@ -30,6 +31,11 @@ class Register extends Component {
         };
 
         console.log(newUser);
+
+        axios
+            .post('users/signup', newUser)
+            .then(res => console.log(res.data))
+            .catch(err => this.setState({ errors: err.response.data }));
     }
 
 
