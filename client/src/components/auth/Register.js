@@ -1,10 +1,98 @@
 import React, { Component } from 'react';
 
 class Register extends Component {
+    
+    constructor() {
+        super(); //constructor 가장 기본의 되는 상태값을 선언
+        this.state = {
+            name: '',
+            email: '',
+            password: '',
+            password2: '',
+            errors: {}
+        };
+        this.onChange = this.onChange.bind(this); //텍스트 필드에 계속 침에 따라 값이 변함
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChange(e) { // 텍스트 필드에 수정할수 있게 하는 작업, 사용자 입력데이터(e)
+        this.setState({ [e.target.name]: e.target.value }); // [e.target.name]: this.state의 5개 항목중 하나라는 뜻
+    }
+
+    onSubmit(e) { //change 안에 있는 내용을 넘기는 작업
+        e.preventDefault(); //전송용버튼으로 사용할 때
+
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
+        };
+
+        console.log(newUser);
+    }
+
+
     render() {
         return (
-            <div>
-                <h1>Register</h1>            
+            <div className="register">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 m-auto">
+                            <h1 className="display-4 text-center">Sign Up</h1>
+                            <p className="lead text-center">
+                                Create your DevConnector account
+                            </p>
+                            <form onSubmit={this.onSubmit}>
+                                <div className="form-group">
+                                    <input 
+                                        type="text"
+                                        className="form-control form-control-lg"
+                                        placeholder="Name"
+                                        name="name"
+                                        value={this.state.name}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <input 
+                                        type="email"
+                                        className="form-control form-control-lg"
+                                        placeholder="Email"
+                                        name="email"
+                                        value={this.state.email}
+                                        onChange={this.onChange}
+                                    />
+                                    <small className="form-text text-muted">
+                                        This site uses Gravatar so if you want a profile image, uses
+                                        a Gravatar email                                    
+                                    </small>
+                                </div>
+                                <div className="form-group">
+                                    <input 
+                                        type="password"
+                                        className="form-control form-control-lg"
+                                        placeholder="Password"
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <input 
+                                        type="password"
+                                        className="form-control form-control-lg"
+                                        placeholder="Confirm password"
+                                        name="password2"
+                                        value={this.state.password2}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
+                                <input type="submit" className="btn btn-info btn-block mt-4" /> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
