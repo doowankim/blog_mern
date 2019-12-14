@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,10 @@
       <workItem from="1575682593273" duration="279000" />
       <workItem from="1575683059143" duration="234000" />
       <workItem from="1575683298066" duration="185000" />
+      <workItem from="1575702096006" duration="639000" />
+      <workItem from="1575783893210" duration="16000" />
+      <workItem from="1575783926072" duration="20000" />
+      <workItem from="1576064893445" duration="1779000" />
     </task>
     <servers />
   </component>
@@ -113,6 +120,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575783904355">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820@0.23.1440.820" timestamp="1575783904355" />
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1575683241842">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
