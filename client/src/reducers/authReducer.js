@@ -1,11 +1,12 @@
-import isEmpty from '../validation/is-empty';
-import {SET_CURRENT_USER} from '../actions/types';
+import isEmpty from "../validation/is-empty";
+import { SET_CURRENT_USER } from "../actions/types";
 
 
 const initialState = {
-    isAuthenticated: false, //token이 있는지 없는지에 따라 로그인 체크하는 것
+    isAuthenticated: false,
     user: {}
 };
+
 
 export default function(state = initialState, action) {
     switch (action.type) {
@@ -15,6 +16,7 @@ export default function(state = initialState, action) {
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             };
+
         default:
             return state;
     }
