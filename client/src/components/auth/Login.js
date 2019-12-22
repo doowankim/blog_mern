@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { loginUser } from "../../actions/authActions";
 import styled from 'styled-components';
@@ -42,6 +41,10 @@ class Login extends Component {
     }
 
 
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -50,12 +53,14 @@ class Login extends Component {
             password: this.state.password
         };
 
+        // axios
+        //     .post('/users/login', userData)
+        //     .then(res => {
+        //         console.log(res)
+        //     });
         this.props.loginUser(userData);
     }
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
-    }
 
 
 
@@ -63,37 +68,37 @@ class Login extends Component {
         const { errors } = this.state;
         return (
             <div className="login">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 m-auto">
-                        <h1 className="display-4 text-center">Log In</h1>
-                        <p className="lead text-center">
-                            Sign in to your DevConnector account
-                        </p>
-                        <form noValidate onSubmit={this.onSubmit}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 m-auto">
+                            <h1 className="display-4 text-center">Log In</h1>
+                            <p className="lead text-center">
+                                Sign in to your DevConnector account
+                            </p>
+                            <form onSubmit={this.onSubmit}>
+                                <TextFieldGroup
+                                    placeholder="Email Address"
+                                    name="email"
+                                    type="email"
+                                    value={this.state.email}
+                                    onChange={this.onChange}
+                                    error={errors.email}
+                                />
 
-                            <TextFieldGroup 
-                                type="email"
-                                placeholder="Email Address"
-                                value={this.state.email}
-                                onChange={this.onChange}
-                                name="email"
-                                error={errors.email}
-                            />
-                            <TextFieldGroup 
-                                type="password"
-                                placeholder="Password"
-                                value={this.state.password}
-                                onChange={this.onChange}
-                                name="password"
-                                error={errors.password}
-                            />
-                            <Input type="submit" className="btn btn-info btn-block mt-4" />
-                        </form>
+                                <TextFieldGroup
+                                    placeholder="Password"
+                                    name="password"
+                                    type="password"
+                                    value={this.state.password}
+                                    onChange={this.onChange}
+                                    error={errors.password}
+                                />
+                                <Input type="submit" className="btn btn-info btn-block mt-4" />
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         );
     }
 }

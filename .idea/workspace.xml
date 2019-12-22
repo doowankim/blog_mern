@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/utils/setAuthToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/utils/setAuthToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/validation/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/validation/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;/Users/user/Desktop/blog_mern/client/node_modules/jwt-decode/lib/index.js" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -46,6 +52,23 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="server" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.server" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -97,6 +120,14 @@
       <workItem from="1575783893210" duration="16000" />
       <workItem from="1575783926072" duration="20000" />
       <workItem from="1576064893445" duration="1779000" />
+      <workItem from="1576402151168" duration="223000" />
+      <workItem from="1576402398766" duration="109000" />
+      <workItem from="1576402628677" duration="2094000" />
+      <workItem from="1576578841280" duration="635000" />
+      <workItem from="1576579692943" duration="1000" />
+      <workItem from="1576753188783" duration="392000" />
+      <workItem from="1576937482872" duration="1741000" />
+      <workItem from="1576987774606" duration="3726000" />
     </task>
     <servers />
   </component>
@@ -120,14 +151,39 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575783904355">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state x="316" y="-871" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576402368866">
+      <screen x="-228" y="-1057" width="1920" height="1057" />
     </state>
+    <state x="316" y="-871" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402368866" />
     <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820@0.23.1440.820" timestamp="1575783904355" />
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1575683241842">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.820@0.23.1440.820" timestamp="1575683241842" />
+    <state width="1419" height="190" key="GridCell.Tab.0.bottom" timestamp="1576989083351">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1899" height="251" key="GridCell.Tab.0.bottom/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374032" />
+    <state width="1419" height="190" key="GridCell.Tab.0.bottom/0.23.1440.820@0.23.1440.820" timestamp="1576989083351" />
+    <state width="1899" height="251" key="GridCell.Tab.0.bottom/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174150" />
+    <state width="1419" height="190" key="GridCell.Tab.0.center" timestamp="1576989083350">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1899" height="251" key="GridCell.Tab.0.center/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374030" />
+    <state width="1419" height="190" key="GridCell.Tab.0.center/0.23.1440.820@0.23.1440.820" timestamp="1576989083350" />
+    <state width="1899" height="251" key="GridCell.Tab.0.center/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174147" />
+    <state width="1419" height="190" key="GridCell.Tab.0.left" timestamp="1576989083350">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1899" height="251" key="GridCell.Tab.0.left/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374029" />
+    <state width="1419" height="190" key="GridCell.Tab.0.left/0.23.1440.820@0.23.1440.820" timestamp="1576989083350" />
+    <state width="1899" height="251" key="GridCell.Tab.0.left/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174146" />
+    <state width="1419" height="190" key="GridCell.Tab.0.right" timestamp="1576989083351">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374031" />
+    <state width="1419" height="190" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1576989083350" />
+    <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174148" />
     <state x="221" y="81" key="SettingsEditor" timestamp="1575683149813">
       <screen x="0" y="23" width="1440" height="820" />
     </state>

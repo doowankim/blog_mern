@@ -1,5 +1,3 @@
-// token의 삽입, 삭제 (login, logout)
-
 import axios from 'axios';
 
 const setAuthToken = token => {
