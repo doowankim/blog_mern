@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import {setCurrentUser} from './actions/authActions';
+import {setCurrentUser, logoutUser} from './actions/authActions';
 
 import Footer from './components/layout/Footer';
 import NavBar from './components/layout/Navbar';
@@ -14,17 +14,27 @@ import Register from './components/auth/Register';
 
 import "./App.css";
 
+//authcheck
+if(localStorage.jwtToken) {
+  //Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
 
-// if(localStorage.jwtToken) {
-//   //Set auth token header auth
-//   setAuthToken(localStorage.jwtToken);
+  //Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
 
-//   //Decode token and get user info and exp
-//   const decoded = jwt_decode(localStorage.jwtToken);
+  //Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
 
-//   //Set user and isAuthenticated
-//   store.dispatch(setCurrentUser(decoded));
-// }
+  // check for expired token
+  const currentTime = Date.now() / 36000;
+  if (decoded.exp < currentTime) {
+
+    store.dispatch(logoutUser());
+
+    window.location.href = '/login'
+  }
+
+}
 
 class App extends Component {
   render() {

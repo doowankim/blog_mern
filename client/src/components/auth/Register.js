@@ -44,6 +44,12 @@ class Register extends Component {
         this.props.registerUser(newUser, this.props.history); //registerUser에 newUser(사용자입력값)을 넣어주고 이상이 없으면 history(login)로 넘어간다
     }
 
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/dashboard'); //login이 되어 있으면(token이 있으면) 넘어가라
+        }
+    }
+
     componentWillReceiveProps(nextProps) { //props를 받아오기전에 실행되는 함수
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors});

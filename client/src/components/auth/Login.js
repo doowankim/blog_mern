@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { loginUser } from "../../actions/authActions";
 import styled from 'styled-components';
@@ -53,11 +52,6 @@ class Login extends Component {
             password: this.state.password
         };
 
-        // axios
-        //     .post('/users/login', userData)
-        //     .then(res => {
-        //         console.log(res)
-        //     });
         this.props.loginUser(userData);
     }
 
