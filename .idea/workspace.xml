@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/reducers/profileReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/common/Spinner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/common/spinner.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/profileActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/common" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="server" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -124,7 +127,7 @@
       <workItem from="1576579692943" duration="1000" />
       <workItem from="1576753188783" duration="392000" />
       <workItem from="1576937482872" duration="1741000" />
-      <workItem from="1576987774606" duration="7431000" />
+      <workItem from="1576987774606" duration="8718000" />
     </task>
     <servers />
   </component>
@@ -153,6 +156,10 @@
     </state>
     <state x="316" y="-871" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402368866" />
     <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820@0.23.1440.820" timestamp="1575783904355" />
+    <state x="299" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576996794085">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="299" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.820@0.23.1440.820" timestamp="1576996794085" />
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1575683241842">
       <screen x="0" y="23" width="1440" height="820" />
     </state>

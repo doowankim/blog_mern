@@ -10,7 +10,7 @@ import {
 export const getCurrentProfile = () => dispatch => {
     dispatch(setProfileLoading());
     axios
-        .get('/profile')
+        .get('/total')
         .then(res =>
             dispatch({
                 type: GET_PROFILE,
