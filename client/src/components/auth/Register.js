@@ -46,7 +46,7 @@ class Register extends Component {
 
     componentWillReceiveProps(nextProps) { //props를 받아오기전에 실행되는 함수
         if (nextProps.errors) {
-            this.setState({ error: nextProps.errors});
+            this.setState({ errors: nextProps.errors});
         }
     }
 
@@ -95,7 +95,7 @@ class Register extends Component {
                                     onChange={this.onChange}
                                     error={errors.password2}
                                 />
-                                <Input type="submit" className="btn btn-info btn-block mt-4" />
+                                <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
                         </div>
                     </div>
