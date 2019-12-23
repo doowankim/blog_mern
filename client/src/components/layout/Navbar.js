@@ -12,7 +12,7 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
     }
 
     render() {
-        const { isAuthenicated, user } = this.props.auth;
+        const { isAuthenticated, user } = this.props.auth;
 
         const authLinks = (
             <ul className="navbar-nav ml-auto">
@@ -64,14 +64,14 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
                     >
                         <span className="navbar-toggler-icon" />
                     </button>
-                    <div>
+                    <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
                                 <Link className="nav-link" to="profiles">
                                     Developers
                                 </Link>
                             </li>
-                            {isAuthenicated ? authLinks : guestLinks}
+                            {isAuthenticated ? authLinks : guestLinks}
                         </ul>
                     </div>
                 </div>

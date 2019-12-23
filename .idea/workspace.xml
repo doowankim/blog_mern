@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/common/Spinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/common/spinner.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/profileActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +124,8 @@
       <workItem from="1576579692943" duration="1000" />
       <workItem from="1576753188783" duration="392000" />
       <workItem from="1576937482872" duration="1741000" />
-      <workItem from="1576987774606" duration="8718000" />
+      <workItem from="1576987774606" duration="9012000" />
+      <workItem from="1577101940099" duration="1225000" />
     </task>
     <servers />
   </component>
