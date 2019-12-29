@@ -36,7 +36,7 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
         );
 
         const guestLinks = (
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <Link className="nav-link" to="register">
                         Sign Up
@@ -53,26 +53,28 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                 <div className="container">
-                    <Link className="navbar-brand" to="landing">
-                        Dev Connector
+                    <Link className="navbar-brand" to="/">
+                        Youmate
                     </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
-                        data-toggle="collapse" //반응형 옵션
-                        data-target="#mobile-nav" //반응형 옵션
+                        data-toggle="collapse"
+                        data-target="#mobile-nav"
                     >
                         <span className="navbar-toggler-icon" />
                     </button>
+
                     <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to="profiles">
-                                    Developers
+                                <Link className="nav-link" to="/profiles">
+                                    {' '}
+                                    uploads
                                 </Link>
                             </li>
-                            {isAuthenticated ? authLinks : guestLinks}
                         </ul>
+                        {isAuthenticated ? authLinks : guestLinks}
                     </div>
                 </div>
             </nav>
