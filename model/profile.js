@@ -20,7 +20,7 @@ const profileSchema = new mongoose.Schema({
     address: {
         type: String
     },
-    status: { //필수요
+    status: { //필수
         type: String,
         required: true
     },

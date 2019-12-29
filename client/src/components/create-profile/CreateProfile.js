@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import InputGroup from "../common/InputGroup";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import SelectListGroup from "../common/SelectListGroup";
+import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
 
 class CreateProfile extends Component {
     constructor(props) {
@@ -24,10 +28,12 @@ class CreateProfile extends Component {
             instagram: '',
             errors: {}
         }
+
+        this.onChange = this.onChange.bind(this);
     }
 
     onChange(e) {
-
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     onSubmit(e) {
@@ -77,6 +83,19 @@ class CreateProfile extends Component {
                 </div>
             )
         }
+
+        const options = [
+            { label: '* Select Professional Status', value: 0 },
+            { label: 'Developer', value: 'Developer' },
+            { label: 'Junior Developer', value: 'Junior Developer' },
+            { label: 'Senior Developer', value: 'Senior Developer' },
+            { label: 'Manager', value: 'Manager' },
+            { label: 'Student or Learning', value: 'Student or Learning' },
+            { label: 'Instructor or Teacher', value: 'Instructor or Teacher' },
+            { label: 'Intern', value: 'Intern' },
+            { label: 'Other', value: 'Other' },
+        ];
+
         return (
             <div className="create-profile">
                 <div className="container">
@@ -96,6 +115,14 @@ class CreateProfile extends Component {
                                     placeholder="* Profile Handle"
                                     error={errors.handle}
                                     info="A unique handle for your profile URL. You full name, company name, nickname"
+                                />
+                                <SelectListGroup
+                                    onChange={this.onChange}
+                                    value={this.state.status}
+                                    name="status"
+                                    options={options}
+                                    error={errors.status}
+                                    info="Give us an idea of where you are at in your career"
                                 />
                                 <TextFieldGroup
                                     onChange={this.onChange}
@@ -174,6 +201,15 @@ class CreateProfile extends Component {
     }
 }
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+    profile: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+// const mapStateToProps = state => ({
+//     profile: state.profile,
+//     errors: state.errors
+// });
+
 
 export default CreateProfile;
