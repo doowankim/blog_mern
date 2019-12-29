@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import InputGroup from "../common/InputGroup";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
-import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import { createProfile } from "../../actions/profileActions";
 
 class CreateProfile extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class CreateProfile extends Component {
             handle: '',
             company: '',
             website: '',
-            location: '',
+            address: '',
             status: '',
             skills: '',
             githubusername: '',
@@ -30,6 +31,7 @@ class CreateProfile extends Component {
         }
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
@@ -37,6 +39,25 @@ class CreateProfile extends Component {
     }
 
     onSubmit(e) {
+        e.preventDefault();
+
+        const profileData = {
+            handle: this.state.handle,
+            company: this.state.company,
+            website: this.state.website,
+            address: this.state.address,
+            status: this.state.status,
+            skills: this.state.skills,
+            githubusername: this.state.githubusername,
+            bio: this.state.bio,
+            twitter: this.state.twitter,
+            facebook: this.state.facebook,
+            linkedin: this.state.linkedin,
+            youtube: this.state.youtube,
+            instagram: this.state.instagram
+        };
+
+        this.props.createProfile(profileData, this.props.history);
 
     }
     render() {
@@ -79,6 +100,14 @@ class CreateProfile extends Component {
                         icon="fab fa-youtube"
                         placehorder="Youtube Profile URL"
                         error={errors.youtube}
+                    />
+                    <InputGroup
+                        onChange={this.onChange}
+                        value={this.state.linkedin}
+                        name="linkedin"
+                        icon="fab fa-linkedin"
+                        placehorder="Linkedin Profile URL"
+                        error={errors.linkedin}
                     />
                 </div>
             )
@@ -172,11 +201,10 @@ class CreateProfile extends Component {
                                     error={errors.bio}
                                     info="Tell us a little about yourself"
                                 />
-                                <div>
+                                <div className="mb-3">
                                     <button
                                         onClick={() => {
                                             this.setState(prevState => ({
-                                                //displaySocialInputs 초기값은 false에서 클릭하면 true로 바뀐다
                                                 displaySocialInputs: !prevState.displaySocialInputs
                                             }));
                                         }}
@@ -206,10 +234,12 @@ CreateProfile.propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-// const mapStateToProps = state => ({
-//     profile: state.profile,
-//     errors: state.errors
-// });
+const mapStateToProps = state => ({
+    profile: state.profile,
+    errors: state.errors
+});
 
 
-export default CreateProfile;
+export default connect(mapStateToProps, { createProfile })(
+    withRouter(CreateProfile)
+);
