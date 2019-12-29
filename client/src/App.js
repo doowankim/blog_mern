@@ -13,6 +13,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/common/PrivateRoute";
+import CreateProfile from "./components/create-profile/CreateProfile";
 
 import "./App.css";
 
@@ -54,6 +55,13 @@ class App extends Component {
                   exact //실행
                   path="/dashboard"
                   component={Dashboard}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
                 />
               </Switch>
             </div>
