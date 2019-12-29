@@ -3,14 +3,36 @@ import {
     GET_PROFILE,
     PROFILE_LOADING,
     GET_ERRORS,
-    CLEAR_CURRENT_PROFILE
+    CLEAR_CURRENT_PROFILE,
+    SET_CURRENT_USER
 } from './types';
+
+// Delete account & profile
+export const deleteAccount = () => dispatch => {
+    //window.confirm()
+    if (window.confirm('Are you sure? This cannot be undone!')) {
+        axios
+            .delete('/profile')
+            .then(res =>
+                dispatch({
+                    type: SET_CURRENT_USER,
+                    payload: {}
+                })
+            )
+            .catch(err =>
+                dispatch({
+                    type: GET_ERRORS,
+                    payload: err.response.data
+                })
+            );
+    }
+}
 
 // GET Current profile
 export const getCurrentProfile = () => dispatch => {
     dispatch(setProfileLoading());
     axios
-        .get('/total')
+        .get('/profile')
         .then(res =>
             dispatch({
                 type: GET_PROFILE,

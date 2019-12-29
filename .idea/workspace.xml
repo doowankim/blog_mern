@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/dashboard/profileActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/actions/profileActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/create-profile/CreateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/create-profile/CreateProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +132,7 @@
       <workItem from="1577199548307" duration="2000" />
       <workItem from="1577500222082" duration="597000" />
       <workItem from="1577543749897" duration="526000" />
-      <workItem from="1577580482488" duration="7458000" />
+      <workItem from="1577580482488" duration="9498000" />
     </task>
     <servers />
   </component>
@@ -200,5 +201,9 @@
       <screen x="0" y="23" width="1440" height="820" />
     </state>
     <state x="100" y="123" width="1240" height="620" key="dock-window-1/0.23.1440.820@0.23.1440.820" timestamp="1577582972625" />
+    <state x="100" y="123" width="1240" height="620" key="dock-window-2" timestamp="1577589259894">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="100" y="123" width="1240" height="620" key="dock-window-2/0.23.1440.820@0.23.1440.820" timestamp="1577589259894" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const profileModel = require('../../model/profile');
+const userModel = require('../../model/user');
 const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
 const validateEducationInput = require('../../validation/education');
@@ -33,7 +34,7 @@ router.get('/:profile_id',authCheck, (req, res) => {
         .findById(id)
         .then(profile => {
             if(!profile){
-                return res.json({msg: 'There is no frofile for this user'});
+                return res.json({msg: 'There is no profile for this user'});
             } else {
                 res.json(profile);
             }
@@ -59,6 +60,24 @@ router.get('/handle/:handle',authCheck, (req, res) => {
         })
         .catch(err => res.json(err));
 });
+
+// @route GET localhost:3200/profile
+// @desc GET current users profile
+// @access Private
+router.get('/', authCheck, (req, res) => {
+    const errors = {};
+
+    profileModel
+        .findOne({ user: req.user.id })
+        .then(profile => {
+            if(!profile){
+                errors.noprofile = 'There is no profile for this user';
+                return res.status(404).json(errors);
+            }
+            res.json(profile);
+        })
+        .catch(err => res.json(err));
+})
 
 
 
@@ -231,6 +250,21 @@ router.delete('/experience/:experienceId', authCheck, (req, res) => {
                 .catch(err => res.json(err));
         })
         .catch(err => res.json(err));
+});
+
+// @route DELETE localhost:7000/profile
+// @desc delete user and profile
+// @access Private
+router.delete('/', authCheck, (req, res) => {
+    profileModel
+        .findOneAndRemove({ user: req.user.id })
+        .then(() => {
+            userModel
+                .findOneAndRemove({ _id: req.user.id })
+                .then(() => {
+                    res.json({success: true})
+                });
+        })
 });
 
 module.exports = router;
