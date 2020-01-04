@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import InputGroup from "../common/InputGroup";
-import TextFieldGroup from "../common/TextFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
-import { createProfile } from "../../actions/profileActions";
 
-class CreateProfile extends Component {
+import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import TextFieldGroup from "../common/TextFieldGroup";
+import InputGroup from "../common/InputGroup";
+import SelectListGroup from "../common/SelectListGroup";
+import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import isEmpty from '../../validation/is-empty';
+
+
+class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,15 +31,56 @@ class CreateProfile extends Component {
             youtube: '',
             instagram: '',
             errors: {}
-        }
-
+        };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.getCurrentProfile(); //자동완성은 아래에 withRouter 작성
+    }
+
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
-            this.setState({errors: nextProps.errors});
+            this.setState({errors: nextProps.errors}) //nextProps에 errors가 있다면 errors:{} 내용을 뿌려준다
+        }
+        if(nextProps.profile.profile) { //profile 폴더안에 profile내용이 있으면
+            const profile = nextProps.profile.profile;
+
+            // Bring skills array back to CSV
+            const skillsCSV = profile.skills.join(','); //join(',') 는  여러개를 써줄 때 ,로 구분해준다
+
+
+            // If profile field doesnt exist, make empty string
+            profile.company = !isEmpty(profile.company) ? profile.company : '';
+            profile.website = !isEmpty(profile.website) ? profile.website : '';
+            profile.location = !isEmpty(profile.location) ? profile.location : '';
+            profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : '';
+            profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
+            profile.social = !isEmpty(profile.social) ? profile.social : {};
+            profile.twitter = !isEmpty(profile.twitter) ? profile.twitter : '';
+            profile.facebook = !isEmpty(profile.facebook) ? profile.facebook : '';
+            profile.linkedin = !isEmpty(profile.linkedin) ? profile.linkedin : '';
+            profile.youtube = !isEmpty(profile.youtube) ? profile.youtube : '';
+            profile.instagram = !isEmpty(profile.instagram) ? profile.instagram : '';
+
+            // Set component fields state
+            this.setState({
+                handle: profile.handle,
+                company: profile.company,
+                website: profile.website,
+                location: profile.location,
+                status: profile.status,
+                skills: skillsCSV,
+                githubusername: profile.githubusername,
+                bio: profile.bio,
+                twitter: profile.twitter,
+                facebook: profile.facebook,
+                linkedin: profile.linkedin,
+                instagram: profile.instagram,
+                youtube: profile.youtube
+            });
+
         }
     }
 
@@ -62,16 +106,14 @@ class CreateProfile extends Component {
             youtube: this.state.youtube,
             instagram: this.state.instagram
         };
-
         this.props.createProfile(profileData, this.props.history);
-
     }
 
-    render() {
 
+    render() {
         const { errors, displaySocialInputs } = this.state;
 
-        let socialInputs;
+        let socialInputs; //데이터가 들어가는 상수선언
 
         if (displaySocialInputs) {
             socialInputs = (
@@ -137,12 +179,8 @@ class CreateProfile extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <h1 className="display-4 text-center">Create Your Profile</h1>
-                            <p className="lead text-center">
-                                Let's get some information to make your profile stand out
-                            </p>
+                            <h1 className="display-4 text-center">Edit Profile</h1>
                             <small className="d-block pb-3">* = required fields</small>
-
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
                                     onChange={this.onChange}
@@ -150,13 +188,14 @@ class CreateProfile extends Component {
                                     name="handle"
                                     placeholder="* Profile Handle"
                                     error={errors.handle}
-                                    info="A unique handle for your profile URL. You full name, company name, nickname"
+                                    info="A unique handle for your profile URL. Your full name, company name, nickname"
                                 />
                                 <SelectListGroup
                                     onChange={this.onChange}
                                     value={this.state.status}
                                     name="status"
                                     options={options}
+                                    placeholder="Status"
                                     error={errors.status}
                                     info="Give us an idea of where you are at in your career"
                                 />
@@ -208,6 +247,7 @@ class CreateProfile extends Component {
                                     error={errors.bio}
                                     info="Tell us a little about yourself"
                                 />
+
                                 <div className="mb-3">
                                     <button
                                         onClick={() => {
@@ -236,7 +276,9 @@ class CreateProfile extends Component {
     }
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
+    createProfile: PropTypes.func.isRequired,
+    getCurrentProfile: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -246,7 +288,6 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-
-export default connect(mapStateToProps, { createProfile })(
-    withRouter(CreateProfile)
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+    withRouter(EditProfile)
 );
