@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddExperiece.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddEducation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/add-credentials/AddExperiece.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddExperiece.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +134,7 @@
       <workItem from="1577580482488" duration="11848000" />
       <workItem from="1577795167789" duration="534000" />
       <workItem from="1577966573146" duration="380000" />
-      <workItem from="1578121128519" duration="5439000" />
+      <workItem from="1578121128519" duration="7707000" />
     </task>
     <servers />
   </component>
@@ -193,10 +195,10 @@
     <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374031" />
     <state width="1419" height="190" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1576989083350" />
     <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174148" />
-    <state x="221" y="81" key="SettingsEditor" timestamp="1575683149813">
+    <state x="221" y="81" key="SettingsEditor" timestamp="1578135793753">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
-    <state x="221" y="81" key="SettingsEditor/0.23.1440.820@0.23.1440.820" timestamp="1575683149813" />
+    <state x="221" y="81" key="SettingsEditor/0.23.1440.820@0.23.1440.820" timestamp="1578135793753" />
     <state x="100" y="123" width="1240" height="620" key="dock-window-1" timestamp="1577582972625">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
