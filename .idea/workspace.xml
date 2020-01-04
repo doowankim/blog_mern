@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddEducation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/profileActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/add-credentials/AddEducation.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddEducation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/add-credentials/AddExperiece.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/add-credentials/AddExperiece.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +134,7 @@
       <workItem from="1577580482488" duration="11848000" />
       <workItem from="1577795167789" duration="534000" />
       <workItem from="1577966573146" duration="380000" />
-      <workItem from="1578121128519" duration="7707000" />
+      <workItem from="1578121128519" duration="8627000" />
     </task>
     <servers />
   </component>

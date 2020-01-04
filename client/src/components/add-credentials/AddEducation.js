@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { connect } from 'react-redux';
+import { addEducation } from "../../actions/profileActions";
 
 class AddEducation extends Component {
 
@@ -37,6 +38,8 @@ class AddEducation extends Component {
             description: this.state.description,
             disabled: this.state.disabled
         };
+
+        this.props.addEducation(eduData, this.props.history);
     }
 
     onChange(e) {
@@ -48,6 +51,12 @@ class AddEducation extends Component {
             disabled: !this.state.disabled,
             current: !this.state.current
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors });
+        }
     }
 
     render() {
@@ -142,7 +151,8 @@ class AddEducation extends Component {
 
 AddEducation.propTypes = {
     profile: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired,
+    addEducation: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -150,4 +160,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(withRouter(AddEducation));
+export default connect(mapStateToProps, { addEducation })(withRouter(AddEducation));

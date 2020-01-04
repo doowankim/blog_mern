@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import TextFieldGroup from "../common/TextFieldGroup";
 import { connect } from 'react-redux';
+import { addExperiece} from "../../actions/profileActions";
 
 class AddExperiece extends Component {
 
@@ -39,7 +40,7 @@ class AddExperiece extends Component {
             description: this.state.description,
             disabled: this.state.disabled
         };
-        console.log(expData);
+        this.props.addExperiece(expData, this.props.history);
     }
 
     onChange(e) {
@@ -52,6 +53,12 @@ class AddExperiece extends Component {
             disabled: !this.state.disabled,
             current: !this.state.current
         });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors }); //nextProps = payload
+        }
     }
 
 
@@ -147,7 +154,8 @@ class AddExperiece extends Component {
 
 AddExperiece.propTypes = {
     profile: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired,
+    addExperiece: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -155,5 +163,5 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-
-export default connect(mapStateToProps)(withRouter(AddExperiece));
+// { addExperience }를 적어야 네트워크를 태울 수 있는 것
+export default connect(mapStateToProps, { addExperiece })(withRouter(AddExperiece));

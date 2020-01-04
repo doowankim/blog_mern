@@ -60,6 +60,32 @@ export const createProfile = (profileData, history) => dispatch => {
         )
 };
 
+// Add experience
+export const addExperiece = (expData, history) => dispatch => { //dispatch 메모리에서 처리하는 비동기방식중 하나
+    axios
+        .post('/profile/experience', expData)
+        .then(res => history.push('/dashboard'))
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data // payload에 error 내용이 담긴다
+            })
+        )
+};
+
+// Add education
+export const addEducation = (eduData, history) => dispatch => {
+    axios
+        .post('/profile/education', eduData)
+        .then(res => history.push('/dashboard'))
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        )
+}
+
 // Profile Loading
 export const setProfileLoading = () => {
     return {
