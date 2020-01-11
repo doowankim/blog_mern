@@ -8,11 +8,37 @@ const multer = require('multer'); //attachedfile 매니지먼트 (이미지만 �
 const uploads = multer({ dest: 'uploads/' });
 const validatePostInput = require('../../validation/post');
 
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function(req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true)
+    } else {
+        cb(null, false)
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
+
 // @route POST localhost:3200/posts
 // @desc Tests posts route
 // @access Private
 
-router.post('/', authCheck, (req, res) => {
+router.post('/', authCheck, upload.single('attachedfile'), (req, res) => {
     const {errors, isValid} = validatePostInput(req.body);
     if(!isValid){
         return res.json(errors);
@@ -21,8 +47,8 @@ router.post('/', authCheck, (req, res) => {
         text: req.body.text,
         name: req.user.name,
         avatar: req.user.avatar,
-        user: req.user.id
-//         attachedfile: req.file.path
+        user: req.user.id,
+        attachedfile: req.file.path
     });
 
     newPost

@@ -8,21 +8,24 @@ const validateEducationInput = require('../../validation/education');
 const validateExperienceInput = require('../../validation/experience');
 const authCheck = passport.authenticate('jwt', { session: false });
 
-// @route GET localhost:3200/total
-// @desc Tests profile total
-// @access Public
 
+// @route   GET api/profile/total
+// @desc    Get all profiles
+// @access  Public
 router.get('/total', (req, res) => {
+
+    const errors = {};
     profileModel
         .find()
-        .then(users => {
-            res.status(200).json({
-                msg: 'total users profile',
-                count: users.length,
-                users: users
-            });
-        })
-        .catch(err => res.json(err));
+        // .select('name, avatar')
+        .populate('user', ['name', 'avatar'])
+        .then(profiles => {
+            if (!profiles) {
+                errors.noprofile = 'There are no profiles';
+                return res.status(404).json(errors);
+            }
+            res.json(profiles);
+        });
 });
 
 // @route GET localhost:3200/profile/:profile_id
