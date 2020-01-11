@@ -42,6 +42,8 @@ InputGroup.propTypes = {
     onChange: PropTypes.func.isRequired
 };
 
+
+//defaultProps: 기본설정(text)으로 정함
 InputGroup.defaultProps = {
     type: 'text'
 };
