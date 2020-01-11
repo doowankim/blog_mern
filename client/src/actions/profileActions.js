@@ -159,3 +159,41 @@ export const getProfiles = () => dispatch => {
             })
         );
 };
+
+// Get profile by handle
+export const getProfileByHandle = handle => dispatch => {
+    dispatch(setProfileLoading());
+    axios
+        .get(`/profile/handle/${handle}`)
+        .then(res =>
+            dispatch({
+                type: GET_PROFILES,
+                payload: res.data
+            })
+        )
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: null
+            })
+        );
+};
+
+// Get profile by profile_id
+export const getProfileById = id => dispatch => {
+    dispatch(setProfileLoading());
+    axios
+        .get(`/profile/${id}`)
+        .then(res =>
+            dispatch({
+                type: GET_PROFILES,
+                payload: res.data
+            })
+        )
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: null
+            })
+        );
+};
