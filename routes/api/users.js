@@ -34,12 +34,7 @@ router.post('/signup', (req, res) => {
                 //     email: 'Email already exists'
                 // });
             } else {
-                // avatar 생성
-                const avatar = gravatar.url(req.body.email, { //기본이미지에 kevin이라고 하면 k를 이미지
-                    s: '200', //size
-                    r: 'pg', //Rating
-                    d: 'mm' //Default
-                });
+
                 // 모델 생성
                 const newUser = new userModel({
                     name: req.body.name,
@@ -167,6 +162,20 @@ router.delete('/delete/:userId', authCheck, (req, res) => {
 //@desc Facebook login
 //@access Public
 router.post('/facebook', passport.authenticate('facebookToken', {session: false}), (req, res) => {
-    console.log("asdfdsdafsdfsfdsfsd");
+    console.log("facebook is ", req.user);
+
+    const payload = {id: req.user._id, name: req.user.facebook.name, avatar: req.user.facebook.avatar};
+
+    jwt.sign(
+        payload,
+        process.env.SECRET,
+        { expiresIn: 36000 },
+        (err, token) => {
+            res.json({
+                success: true,
+                tokenInfo: 'Bearer ' + token
+            });
+        }
+    )
 });
 module.exports = router;

@@ -43,22 +43,23 @@ module.exports = passport => {
             console.log('accessToken', accessToken);
             console.log('refreshToken', refreshToken);
 
-            // const existingUser = await userModel.findOne({ "facebook.id": profile.id });
-            // if (existingUser) {
-            //     return cb(null, existingUser);
-            // }
-            //
-            // const newUser = new userModel({
-            //     method: 'facebook',
-            //     facebook: {
-            //         id: profile.id,
-            //         name: profile.displayName,
-            //         email: profile.emails[0].value,
-            //         avatar: profile.photos[0].value
-            //     }
-            // });
-            // await newUser.save();
-            // cb(null, newUser);
+            const existingUser = await userModel.findOne({ "facebook.id": profile.id });
+            if (existingUser) {
+                return cb(null, existingUser);
+            }
+
+            const newUser = new userModel({
+                method: 'facebook',
+                facebook: {
+                    id: profile.id,
+                    name: profile.displayName,
+                    email: profile.emails[0].value,
+                    avatar: profile.photos[0].value
+                }
+            });
+            await newUser.save();
+            // err가 없고 newUser로 리턴해준다
+            cb(null, newUser);
         } catch(error) {
             cb(error, false, error.message);
         }
