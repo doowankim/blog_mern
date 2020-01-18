@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from "../../actions/authActions";
-import styled from 'styled-components';
 import TextFieldGroup from '../common/TextFieldGroup';
 
-const Input = styled.input`
-    height: 50px;
-`;
 
 class Login extends Component {
 
@@ -87,7 +83,7 @@ class Login extends Component {
                                     onChange={this.onChange}
                                     error={errors.password}
                                 />
-                                <Input type="submit" className="btn btn-info btn-block mt-4" />
+                                <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
                         </div>
                     </div>

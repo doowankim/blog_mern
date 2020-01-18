@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions/authActions';
-import styled from "styled-components";
+import { registerUser, authFacebook } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
-
-const Input = styled.input`
-    height: 50px;
-`;
+import FacebookLogin from 'react-facebook-login';
 
 class Register extends Component {
     
@@ -23,10 +19,20 @@ class Register extends Component {
         };
         this.onChange = this.onChange.bind(this); //텍스트 필드에 계속 침에 따라 값이 변함
         this.onSubmit = this.onSubmit.bind(this);
+        this.responseFacebook = this.responseFacebook.bind(this);
     }
 
     onChange(e) { // 텍스트 필드에 수정할수 있게 하는 작업, 사용자 입력데이터(e)
         this.setState({ [e.target.name]: e.target.value }); // [e.target.name]: this.state의 5개 항목중 하나라는 뜻
+    }
+
+    responseFacebook(res) {
+        console.log('responseFacebook', res);
+        this.props.authFacebook(res.accessToken);
+        // errorMessage는 facebook에서 주는 메시지
+        if (!this.props.errorMessage) {
+            this.props.history.push('/dashboard')
+        }
     }
 
     onSubmit(e) { //change 안에 있는 내용을 넘기는 작업
@@ -101,8 +107,17 @@ class Register extends Component {
                                     onChange={this.onChange}
                                     error={errors.password2}
                                 />
-                                <Input type="submit" className="btn btn-info btn-block mt-4" />
+                                <input type="submit" className="btn btn-info btn-block mt-4" />
                             </form>
+                            <div>
+                                <FacebookLogin
+                                    appId="386257415464246"
+                                    textButton="Facebook"
+                                    fields="name,email,picture"
+                                    callback={this.responseFacebook}
+                                    cssClass="btn btn-outline-primary"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,6 +128,7 @@ class Register extends Component {
 
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
+    authFacebook: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -123,4 +139,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerUser, authFacebook })(withRouter(Register));

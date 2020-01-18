@@ -85,3 +85,29 @@ export const logoutUser = () => dispatch => {
     setAuthToken(false);
     dispatch(setCurrentUser({}));
 };
+
+// facebook login
+export const authFacebook = userData => dispatch => {
+    axios
+        .post('/users/facebook', {
+            access_token: userData
+        })
+        .then(res => {
+            // Save to localStorage
+            const { tokenInfo } = res.data;
+            // Set token to ls
+            localStorage.setItem('jwtToken', tokenInfo);
+            // Set token to Auth header
+            setAuthToken(tokenInfo);
+            // Decode token to get user data
+            const decoded = jwt_decode(tokenInfo);
+            // Set current user
+            dispatch(setCurrentUser(decoded));
+        })
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+}
