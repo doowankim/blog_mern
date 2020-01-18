@@ -162,4 +162,11 @@ router.delete('/delete/:userId', authCheck, (req, res) => {
         })
         .catch(err => res.json(err));
 });
+
+//@route GET api/users/facebook
+//@desc Facebook login
+//@access Public
+router.post('/facebook', passport.authenticate('facebookToken', {session: false}), (req, res) => {
+    console.log("asdfdsdafsdfsfdsfsd");
+});
 module.exports = router;

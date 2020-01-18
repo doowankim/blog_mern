@@ -35,9 +35,6 @@ const postingSchema = mongoose.Schema({
     name: {
         type: String
     },
-    avatar: {
-        type: String
-    },
     attachedfile: {
         type: String
     },

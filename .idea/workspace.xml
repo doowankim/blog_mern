@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/actions/postActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/BBS/readBBS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +152,15 @@
       <workItem from="1578534137794" duration="392000" />
       <workItem from="1578545735195" duration="599000" />
       <workItem from="1578720567859" duration="6000" />
-      <workItem from="1578723545735" duration="9239000" />
+      <workItem from="1578723545735" duration="9851000" />
+      <workItem from="1578807760730" duration="2256000" />
+      <workItem from="1578990945937" duration="309000" />
+      <workItem from="1579179052462" duration="1012000" />
+      <workItem from="1579268972292" duration="316000" />
+      <workItem from="1579322431602" duration="8258000" />
+      <workItem from="1579331370147" duration="45000" />
+      <workItem from="1579331427849" duration="20000" />
+      <workItem from="1579331586849" duration="877000" />
     </task>
     <servers />
   </component>

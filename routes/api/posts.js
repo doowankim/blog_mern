@@ -65,6 +65,7 @@ router.get('/total', (req, res) => {
     postModel
         .find()
         .sort({ date: -1 }) //날짜에 맞춰서 최신순이 위로 게시된다
+//         .populate('users', 'name email avatar')
         .then(posts => {
             res.json({
                 count: posts.length,

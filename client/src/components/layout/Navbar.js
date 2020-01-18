@@ -73,6 +73,12 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
                                     uploads
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/posts">
+                                    {' '}
+                                    BBS
+                                </Link>
+                            </li>
                         </ul>
                         {isAuthenticated ? authLinks : guestLinks}
                     </div>

@@ -18,6 +18,7 @@ import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperiece from "./components/add-credentials/AddExperiece";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Profiles from "./components/profiles/Profiles";
+import ReadBBS from "./components/BBS/readBBS";
 
 import "./App.css";
 
@@ -88,6 +89,13 @@ class App extends Component {
                     exact
                     path="/add-education"
                     component={AddEducation}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                    exact
+                    path="/posts"
+                    component={ReadBBS}
                 />
               </Switch>
             </div>
