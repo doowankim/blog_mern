@@ -11,7 +11,7 @@ const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY || "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");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // @route POST localhost:3200/users/signup
 // @desc user register
@@ -39,16 +39,16 @@ router.post('/signup', (req, res) => {
                 const payload = {name, email, password};
                 const token = jwt.sign(
                     {payload},
-                    process.env.JWT_ACCOUNT_ACTIVATION || "false",
+                    process.env.JWT_ACCOUNT_ACTIVATION,
                     { expiresIn: '10m'}
                 )
                 const emailData = {
-                    from: process.env.EMAIL_FROM || "rlaendhks11@gmail.com",
+                    from: process.env.EMAIL_FROM,
                     to: req.body.email,
                     subject: 'Account Activation Link',
                     html:`
                         <h1>이메일 확인</h1>
-                        <p>${process.env.CLIENT_URL || "http://localhost:3000"}/auth/activate/${token}</p>
+                        <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
                         <hr />
                         <p>This email may contain sensetive information</p>
                         <p>${process.env.CLIENT_URL}</p>
@@ -227,4 +227,38 @@ router.post('/google', passport.authenticate('googlePlusToken', {session: false}
         }
     )
 });
+
+//@route POST api/users/accountactivation
+//@desc Sendgrid
+//@access Public
+router.post('/accountactivation', (req, res) => {
+    const {token} = req.body;
+    if (token) {
+        jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION, (err) => {
+            if (err) {
+                console.log('JWT Verify in account activation error', err);
+                return res.status(401).json({
+                    error: 'Expired Link. Signup again'
+                });
+            }
+
+            const { name, email, password} = jwt.decode(token);
+
+            const user = new userModel({ name, email, password });
+
+            user
+                .save()
+                .then(user => {
+                    return res.json({
+                        message: 'Signup success. Please signin'
+                    });
+                })
+                .catch(err => {
+                    return res.json(err);
+                });
+        })
+    }
+});
+
+
 module.exports = router;
