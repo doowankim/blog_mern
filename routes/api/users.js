@@ -4,17 +4,21 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const userModel = require('../../model/user');
 const jwt = require('jsonwebtoken');
+const sgMail = require('@sendgrid/mail');
 const passport = require('passport');
 const authCheck = passport.authenticate('jwt', { session: false }); //jwt으로 인증을 한다
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || "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");
 
 // @route POST localhost:3200/users/signup
 // @desc user register
 // @access Public
 router.post('/signup', (req, res) => {
+
+    const {name, email, password, password2} = req.body;
 
     const { errors, isValid } = validateRegisterInput(req.body); //사용자 입력값이 들어가면 errors, isValid로 아웃풋이 나옴
 
@@ -24,7 +28,7 @@ router.post('/signup', (req, res) => {
     }
 
     userModel
-        .findOne({ "local.email": req.body.email}) //findById = id만 검색, findOne = id를 제외하고 나머지를 검색
+        .findOne({ "local.email": email}) //findById = id만 검색, findOne = id를 제외하고 나머지를 검색
 
         .then(user => {
             if(user) {
@@ -32,20 +36,51 @@ router.post('/signup', (req, res) => {
                 errors.msg = 'Email already exists';
                 return res.json(errors);
             } else {
+                const payload = {name, email, password};
+                const token = jwt.sign(
+                    {payload},
+                    process.env.JWT_ACCOUNT_ACTIVATION || "false",
+                    { expiresIn: '10m'}
+                )
+                const emailData = {
+                    from: process.env.EMAIL_FROM || "rlaendhks11@gmail.com",
+                    to: req.body.email,
+                    subject: 'Account Activation Link',
+                    html:`
+                        <h1>이메일 확인</h1>
+                        <p>${process.env.CLIENT_URL || "http://localhost:3000"}/auth/activate/${token}</p>
+                        <hr />
+                        <p>This email may contain sensetive information</p>
+                        <p>${process.env.CLIENT_URL}</p>
+                    `
+                };
+
+                sgMail
+                    .send(emailData)
+                    .then(sent => {
+                        return res.status(200).json({
+                            message: `Email has been sent to ${email}. Follow the instruction to activate your account`
+                        });
+                    })
+                    .catch(err => {
+                        return res.json({
+                            message: err.message
+                        });
+                    });
 
                 // 모델 생성
-                const newUser = new userModel({
-                    method: "local",
-                    local: {
-                        name: req.body.name,
-                        email: req.body.email,
-                        password: req.body.password
-                    }
-                });
-                console.log(newUser);
-                newUser.save()
-                    .then(user => res.json(newUser))
-                    .catch(err => res.json(err));
+                // const newUser = new userModel({
+                //     method: "local",
+                //     local: {
+                //         name: req.body.name,
+                //         email: req.body.email,
+                //         password: req.body.password
+                //     }
+                // });
+                // console.log(newUser);
+                // newUser.save()
+                //     .then(user => res.json(newUser))
+                //     .catch(err => res.json(err));
             }
         })
         .catch(err => res.json(err));
