@@ -27,7 +27,7 @@ export const deleteAccount = () => dispatch => {
                 })
             );
     }
-}
+};
 
 // GET Current profile
 export const getCurrentProfile = () => dispatch => {

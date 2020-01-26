@@ -53,6 +53,7 @@ export const loginUser = userData => dispatch => {
         .then(res => {
             // Save to localStorage
             const { tokenInfo } = res.data;
+            console.log(res.data);
             // Set token to ls
             localStorage.setItem('jwtToken', tokenInfo);
             // Set token to Auth header
@@ -110,4 +111,32 @@ export const authFacebook = userData => dispatch => {
                 payload: err.response.data
             })
         );
-}
+};
+
+// google login
+export const authGoogle = userData => dispatch => {
+
+    axios
+        .post('/users/google', {
+            access_token: userData
+        })
+        .then(res => {
+            // Save to localStorage
+            const { tokenInfo } = res.data;
+            console.log("tokenInfo", tokenInfo);
+            // Set token to ls
+            localStorage.setItem('jwtToken', tokenInfo);
+            // Set token to Auth header
+            setAuthToken(tokenInfo);
+            // Decode token to get user data
+            const decoded = jwt_decode(tokenInfo);
+            // Set current user
+            dispatch(setCurrentUser(decoded));
+        })
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+};

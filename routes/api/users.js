@@ -24,34 +24,28 @@ router.post('/signup', (req, res) => {
     }
 
     userModel
-        .findOne({ email: req.body.email}) //findById = id만 검색, findOne = id를 제외하고 나머지를 검색
+        .findOne({ "local.email": req.body.email}) //findById = id만 검색, findOne = id를 제외하고 나머지를 검색
+
         .then(user => {
             if(user) {
 
                 errors.msg = 'Email already exists';
                 return res.json(errors);
-                // return res.json({
-                //     email: 'Email already exists'
-                // });
             } else {
 
                 // 모델 생성
                 const newUser = new userModel({
-                    name: req.body.name,
-                    email: req.body.email,
-                    avatar: avatar, //같은 이름은 생략 가능 (avatar,)
-                    password: req.body.password
+                    method: "local",
+                    local: {
+                        name: req.body.name,
+                        email: req.body.email,
+                        password: req.body.password
+                    }
                 });
-                // 패스워드 암호화
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => { //2차 암호화
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser.save()
-                            .then(user => res.json(user))
-                            .catch(err => res.json(err));
-                    });
-                });
+                console.log(newUser);
+                newUser.save()
+                    .then(user => res.json(newUser))
+                    .catch(err => res.json(err));
             }
         })
         .catch(err => res.json(err));
@@ -72,21 +66,20 @@ router.post('/login', (req, res) => {
 
    //email이 있는지 없는지-> password 매칭-> 화면에 뿌려줌(return jwt)
     userModel
-       .findOne({email: req.body.email})
+       .findOne({"local.email": req.body.email})
        .then(user => {
            if(!user){
                errors.msg = 'user not found';
                return res.json(errors);
-               // return res.json({
-               //     msg: 'user not found'
 
            } else {
                bcrypt
-                   .compare(req.body.password, user.password)
+                   .compare(req.body.password, user.local.password)
                    .then(isMatch => {
                        if(isMatch) {
                            //token에 들어갈 내용 상수화
-                           const payload = { id: user.id, name: user.name, avatar: user.avatar };
+                           const payload = { id: user._id, name: user.local.name, avatar: user.local.avatar };
+                           console.log("payload", payload);
                            //token 생성
                            jwt.sign(
                                payload,
@@ -165,6 +158,27 @@ router.post('/facebook', passport.authenticate('facebookToken', {session: false}
     console.log("facebook is ", req.user);
 
     const payload = {id: req.user._id, name: req.user.facebook.name, avatar: req.user.facebook.avatar};
+
+    jwt.sign(
+        payload,
+        process.env.SECRET,
+        { expiresIn: 36000 },
+        (err, token) => {
+            res.json({
+                success: true,
+                tokenInfo: 'Bearer ' + token
+            });
+        }
+    )
+});
+
+//@route GET api/users/google
+//@desc Google login
+//@access Public
+router.post('/google', passport.authenticate('googlePlusToken', {session: false}), (req, res) => {
+    console.log("google is ", req.user);
+
+    const payload = {id: req.user._id, name: req.user.google.name, avatar: req.user.google.avatar};
 
     jwt.sign(
         payload,

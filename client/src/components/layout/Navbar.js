@@ -18,7 +18,7 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <a
-                        href=""
+                        href=" "
                         onClick={this.onLogoutClick.bind(this)}
                         className="nav-link"
                     >

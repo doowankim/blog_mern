@@ -14,10 +14,6 @@ class ReadBBS extends Component {
         };
     }
 
-    onClick(e) {
-
-    }
-
 
     componentDidMount() {
         axios

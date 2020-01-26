@@ -3,25 +3,6 @@ const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 
 const userSchema = new mongoose.Schema({
-    // name: {
-    //     type: String,
-    //     required: true
-    // },
-    // email: {
-    //     type: String,
-    //     required: true
-    // },
-    // password: {
-    //     type: String,
-    //     required: true
-    // },
-    // avatar: { //프로필 이미지(자동으로 생성되게 할거임), npm install gravatar
-    //     type: String
-    // },
-    // date: {
-    //     type: Date,
-    //     default: Date.now //필수 값은 아니지만 안맞다면 현재시간으로 맞춰줌
-    // }
 
     method: {
         type: String,
@@ -46,6 +27,25 @@ const userSchema = new mongoose.Schema({
     },
 
     facebook: {
+        id: {
+            type: String
+        },
+        name: {
+            type: String
+        },
+        email: {
+            type: String,
+            lowercase: true
+        },
+        password: {
+            type: String
+        },
+        avatar: {
+            type: String
+        }
+    },
+
+    google: {
         id: {
             type: String
         },
@@ -95,52 +95,11 @@ userSchema.pre("save", async function (next) {
         console.log('exited');
         next();
 
-        // // 패스워드 암호화
-        // await bcrypt.genSalt(10, (err, salt) => {
-        //     bcrypt.hash(bodyPassword, salt, (err, hash) => { //2차 암호화
-        //         if (err) throw err;
-        //         this.local.password = hash;
-        //
-        //
-        //
-        //     });
-        // });
-
     }
     catch (error) {
         next(error)
     }
 })
 
-// // password에 대해서 암호화
-// userSchema
-//     .virtual('password')
-//     .set(function(password) {
-//         this._password = password;
-//         this.salt = this.makeSalt();
-//         this.password = this.encryptPassword(password);
-//     })
-//     .get(function() {
-//         return this._password;
-//     });
-//
-// // method
-// userSchema.methods = {
-//     // password true or false
-//     authenticate: function(plainText) {
-//         return this.encryptPassword(PlainText) === this.password;
-//     },
-//
-//     encryptPassword: function(password) {
-//         if (!password) return '';
-//         try {
-//             return bcrypt
-//                 .compare(password, this.salt)
-//         }
-//         catch (err) {
-//             return '';
-//         }
-//     }
-// }
 
 module.exports = mongoose.model('users', userSchema);

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerUser, authFacebook } from '../../actions/authActions';
+import { registerUser, authFacebook, authGoogle } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from "react-google-login";
 
 class Register extends Component {
     
@@ -20,6 +21,7 @@ class Register extends Component {
         this.onChange = this.onChange.bind(this); //텍스트 필드에 계속 침에 따라 값이 변함
         this.onSubmit = this.onSubmit.bind(this);
         this.responseFacebook = this.responseFacebook.bind(this);
+        this.responseGoogle = this.responseGoogle.bind(this);
     }
 
     onChange(e) { // 텍스트 필드에 수정할수 있게 하는 작업, 사용자 입력데이터(e)
@@ -33,6 +35,15 @@ class Register extends Component {
         if (!this.props.errorMessage) {
             this.props.history.push('/dashboard')
         }
+    }
+
+    responseGoogle(res) {
+        console.log('responseGoogle', res);
+        this.props.authGoogle(res.accessToken);
+        //
+        // if (!this.props.error) {
+        //     this.props.history.push('/dashboard')
+        // }
     }
 
     onSubmit(e) { //change 안에 있는 내용을 넘기는 작업
@@ -118,6 +129,14 @@ class Register extends Component {
                                     cssClass="btn btn-outline-primary"
                                 />
                             </div>
+                            <div>
+                                <GoogleLogin
+                                    clientId="738340123378-3qap6p510u4fp5cse0g7c7gnpa34pucj.apps.googleusercontent.com"
+                                    buttonText="Login"
+                                    onSuccess={this.responseGoogle}
+                                    onFailure={result => console.log(result)}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -129,6 +148,7 @@ class Register extends Component {
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
     authFacebook: PropTypes.func.isRequired,
+    authGoogle: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -139,4 +159,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { registerUser, authFacebook })(withRouter(Register));
+export default connect(mapStateToProps, { registerUser, authFacebook, authGoogle })(withRouter(Register));

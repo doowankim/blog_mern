@@ -3,8 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/postActions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/profileActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/profileActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BBS/readBBS.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BBS/readBBS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/auth/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +161,17 @@
       <workItem from="1579322431602" duration="8258000" />
       <workItem from="1579331370147" duration="45000" />
       <workItem from="1579331427849" duration="20000" />
-      <workItem from="1579331586849" duration="2788000" />
+      <workItem from="1579331586849" duration="3570000" />
+      <workItem from="1579335172847" duration="871000" />
+      <workItem from="1579402918112" duration="1996000" />
+      <workItem from="1579420681225" duration="514000" />
+      <workItem from="1579421314016" duration="358000" />
+      <workItem from="1579422075925" duration="579000" />
+      <workItem from="1579519707236" duration="1642000" />
+      <workItem from="1579675801822" duration="4518000" />
+      <workItem from="1579788307875" duration="1190000" />
+      <workItem from="1579830179007" duration="1499000" />
+      <workItem from="1579857407400" duration="5286000" />
     </task>
     <servers />
   </component>
@@ -228,6 +248,10 @@
       <screen x="0" y="23" width="1440" height="820" />
     </state>
     <state x="100" y="123" width="1240" height="620" key="dock-window-2/0.23.1440.820@0.23.1440.820" timestamp="1577589259894" />
+    <state x="368" y="174" width="703" height="518" key="find.popup" timestamp="1579860573534">
+      <screen x="0" y="23" width="1440" height="820" />
+    </state>
+    <state x="368" y="174" width="703" height="518" key="find.popup/0.23.1440.820@0.23.1440.820" timestamp="1579860573534" />
     <state x="385" y="167" width="670" height="676" key="search.everywhere.popup" timestamp="1579332549389">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
