@@ -87,6 +87,8 @@ userSchema.pre("save", async function (next) {
         });
         this.local.avatar = avatar;
 
+        console.log(this.local.avatar);
+
         const salt = await bcrypt.genSalt(10);
 
         const passwordHash = await bcrypt.hash(this.local.password, salt);

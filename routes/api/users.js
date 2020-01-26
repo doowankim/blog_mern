@@ -38,10 +38,10 @@ router.post('/signup', (req, res) => {
             } else {
                 const payload = {name, email, password};
                 const token = jwt.sign(
-                    {payload},
+                    payload,
                     process.env.JWT_ACCOUNT_ACTIVATION,
-                    { expiresIn: '10m'}
-                )
+                    { expiresIn: '1h'}
+                );
                 const emailData = {
                     from: process.env.EMAIL_FROM,
                     to: req.body.email,
@@ -242,9 +242,14 @@ router.post('/accountactivation', (req, res) => {
                 });
             }
 
-            const { name, email, password} = jwt.decode(token);
+            const { name, email, password } = jwt.decode(token);
 
-            const user = new userModel({ name, email, password });
+            const user = new userModel({
+                method: "local",
+                local: {
+                    name, email, password
+                }
+            });
 
             user
                 .save()
