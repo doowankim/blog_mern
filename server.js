@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const passport = require('passport');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv'); //env를 쓰겠다는 설정
 dotenv.config();
 
@@ -31,6 +32,15 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use('/posts', postRoutes);
 app.use('/profile', profileRoutes);
 app.use('/users', userRoutes);
+
+// 배포 코드
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 
 
