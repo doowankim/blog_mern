@@ -8,7 +8,7 @@ const GooglePlusTokenStrategy = require('passport-google-plus-token');
 
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(); //Header에 bearer token 값을 푼다
-opts.secretOrKey = process.env.SECRET;
+opts.secretOrKey = process.env.SECRET || "doowankim";
 
 module.exports = passport => {
     passport.use(
@@ -28,8 +28,8 @@ module.exports = passport => {
     );
 
     passport.use('facebookToken', new FacebookTokenStrategy({
-        clientID: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+        clientID: process.env.FACEBOOK_CLIENT_ID || "386257415464246",
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET || "9a620e370c1e9ea8e5384688858914aa"
     }, async (accessToken, refreshToken, profile, cb) => {
         try {
             console.log('profile', profile);
@@ -59,8 +59,8 @@ module.exports = passport => {
     }));
 
     passport.use('googlePlusToken', new GooglePlusTokenStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        clientID: process.env.GOOGLE_CLIENT_ID || "738340123378-3qap6p510u4fp5cse0g7c7gnpa34pucj.apps.googleusercontent.com",
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET || "1TGiGHD5RKvxWXpDZcVjmMNk"
     }, async (accessToken, refreshToken, profile, cb) => {
         try {
             console.log('profile', profile);
