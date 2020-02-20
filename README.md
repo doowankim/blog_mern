@@ -71,13 +71,11 @@
 | [redux-thunk](https://github.com/reduxjs/redux-thunk)                                      | Redux용 thunk 미들웨어 | - |
 | [react-facebook-login](https://github.com/keppelen/react-facebook-login)                                                   | Facebook 로그인을 위한 구성요소                                                                                                                        | -                  |
 | [react-google-login](https://github.com/anthonyjgrove/react-google-login)                                                   | Google 로그인을 위한 구성요소
-| -                  |
 | [react-icons-kit](https://github.com/reduxjs/redux)                                                   | icon kit                                                                                                                        | -                  |
 | [react-moment](https://github.com/reduxjs/redux)                                                   | 날짜 라이브러리의 구성 요소                                                                                                                        | -                  |
 | [styled-components](https://github.com/styled-components/styled-components)                 | 구성 요소 연령에 대한 시각적 기본 요소. ES6 및 CSS를 사용하여 스트레스없이 앱의 스타일을 지정                                                                                | -                  |
 | [classnames](https://github.com/JedWatson/classnames)                                               | classNames를 조건부로 결합하기 위한 자바스크립트 유틸리티                                                                                                                                           | -                  |
 | [jwt-decode](https://github.com/anthonyjgrove/react-google-login)                                                   | jwt-token을 디코딩하는 라이브러리
-| -                  |
 
 ### devDependencies
 
