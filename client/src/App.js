@@ -19,6 +19,9 @@ import AddExperiece from "./components/add-credentials/AddExperiece";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import ReadBBS from "./components/BBS/readBBS";
+import Write from "./components/Write/writing";
+import Detail from './components/BBS/Detail';
+import Text from "./components/BBS/Text";
 
 import "./App.css";
 
@@ -56,6 +59,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/posts" component={ReadBBS} />
               <Switch>
                 <PrivateRoute
                   exact //실행
@@ -94,8 +98,22 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                     exact
-                    path="/posts"
-                    component={ReadBBS}
+                    path="/writing"
+                    component={Write}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                    exact
+                    path="/detail"
+                    component={Detail}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                    exact
+                    path="/text"
+                    component={Text}
                 />
               </Switch>
             </div>

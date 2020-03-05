@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Moment from "react-moment";
 
@@ -34,39 +33,34 @@ class ReadBBS extends Component {
             <div className="BBS">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4">
-                            <Link to="/dashboard" className="btn btn-light">
-                                Go Back
-                            </Link>
-                        </div>
-                        <div className="col-md-4 offset-md-4 text-right">
-                            <Link to="/dashboard" className="btn btn-light">
+                        <div className="col-sm-4">
+                            <Link to="/writing" className="btn btn-dark">
                                 Write
                             </Link>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-6 offset-md-3">
-                                <h1 className="display-4 text-center">BBS</h1>
-                                <p className="lead text-center">
-                                    BBS
-                                </p>
-                            </div>
                         </div>
                             <table className="table table-hover">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Date</th>
+                                    <th scope="col">이   름</th>
+                                    <th scope="col">제   목</th>
+                                    <th scope="col">작성 날짜</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {results.map(result =>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>{result.name}</td>
-                                        <td>{result.text}</td>
+                                        <th scope="row">#</th>
+                                                <td>
+                                                    <a href="/detail">
+                                                        {result.name}
+                                                    </a>
+                                                </td>
+                                            <td>
+                                                <a href="/text">
+                                                    {result.title}
+                                                </a>
+                                            </td>
                                         <td>
                                             <Moment format="YYYY년 MM월 DD일">
                                                 {result.date.substring(0, 10)}

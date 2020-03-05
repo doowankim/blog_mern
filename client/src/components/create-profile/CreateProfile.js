@@ -137,11 +137,11 @@ class CreateProfile extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <h1 className="display-4 text-center">Create Your Profile</h1>
+                            <h1 className="display-4 text-center">Create your Profile</h1>
                             <p className="lead text-center">
-                                Let's get some information to make your profile stand out
+                                당신의 프로필을 돋보이게 하는 정보를 입력해 주세요
                             </p>
-                            <small className="d-block pb-3">* = required fields</small>
+                            <small className="d-block pb-3">* = 필수 요소</small>
 
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup

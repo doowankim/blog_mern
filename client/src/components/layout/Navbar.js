@@ -51,10 +51,10 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
         );
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
-                        Youmate
+                        Devlog
                     </Link>
                     <button
                         className="navbar-toggler"
@@ -70,13 +70,13 @@ class NavBar extends Component { //로그인을 하면 메뉴가 바뀜
                             <li className="nav-item">
                                 <Link className="nav-link" to="/profiles">
                                     {' '}
-                                    uploads
+                                    채용 공고
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/posts">
                                     {' '}
-                                    BBS
+                                    게시판
                                 </Link>
                             </li>
                         </ul>

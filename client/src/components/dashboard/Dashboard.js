@@ -25,14 +25,14 @@ class Dashboard extends Component {
         //데이터가 없는 상수
         let dashboardContent;
 
-        if ( profile === null || loading) {
+        if ( profile === null || loading ) {
             dashboardContent = <Spinner />
         } else {
             if (Object.keys(profile).length > 0) { //profile에 정보가 있으면~
                 dashboardContent = (
                     <div>
                         <p className="lead text-muted">
-                            Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+                            환영합니다! <Link to={`/profile/${profile.handle}`}>{user.name} 님.</Link>
                         </p>
                         <ProfileActions />
                         <Education education={profile.education} />
@@ -62,7 +62,6 @@ class Dashboard extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="display-4">Dashboard</h1>
                             {dashboardContent}
                         </div>
                     </div>

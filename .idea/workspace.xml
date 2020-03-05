@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="872dac2b-3a15-4d33-b539-435cdbd84e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/actions/postActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/BBS/Detail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/BBS/Text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Write/writing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/common/PostGroup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/reducers/postReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BBS/readBBS.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BBS/readBBS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/create-profile/CreateProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/create-profile/CreateProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Education.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Education.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/Experience.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/Experience.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +184,17 @@
       <workItem from="1579788307875" duration="1190000" />
       <workItem from="1579830179007" duration="1499000" />
       <workItem from="1579857407400" duration="10264000" />
+      <workItem from="1583146899637" duration="469000" />
+      <workItem from="1583196391878" duration="316000" />
+      <workItem from="1583198043926" duration="2884000" />
+      <workItem from="1583203467491" duration="28000" />
+      <workItem from="1583238411713" duration="1053000" />
+      <workItem from="1583286674326" duration="18000" />
+      <workItem from="1583286832929" duration="50000" />
+      <workItem from="1583291776120" duration="3436000" />
+      <workItem from="1583308819928" duration="373000" />
+      <workItem from="1583310406043" duration="90000" />
+      <workItem from="1583372522526" duration="20370000" />
     </task>
     <servers />
   </component>
@@ -193,38 +227,44 @@
     </state>
     <state x="316" y="-871" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402368866" />
     <state x="408" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.820@0.23.1440.820" timestamp="1575783904355" />
-    <state x="299" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1576996794085">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state x="299" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583396383777">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="299" y="197" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.820@0.23.1440.820" timestamp="1576996794085" />
+    <state x="299" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.877@0.23.1440.877" timestamp="1583396383777" />
+    <state x="299" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1440.23.1048.747/0.23.1440.877@0.23.1440.877" timestamp="1583380080682" />
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1575683241842">
       <screen x="0" y="23" width="1440" height="820" />
     </state>
     <state x="460" y="277" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1440.820@0.23.1440.820" timestamp="1575683241842" />
-    <state width="1419" height="190" key="GridCell.Tab.0.bottom" timestamp="1578318764880">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom" timestamp="1583147271649">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="251" key="GridCell.Tab.0.bottom/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374032" />
     <state width="1419" height="190" key="GridCell.Tab.0.bottom/0.23.1440.820@0.23.1440.820" timestamp="1578318764880" />
     <state width="1899" height="251" key="GridCell.Tab.0.bottom/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174150" />
-    <state width="1419" height="190" key="GridCell.Tab.0.center" timestamp="1578318764879">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state width="1419" height="208" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1583147271649" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center" timestamp="1583147271647">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="251" key="GridCell.Tab.0.center/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374030" />
     <state width="1419" height="190" key="GridCell.Tab.0.center/0.23.1440.820@0.23.1440.820" timestamp="1578318764879" />
     <state width="1899" height="251" key="GridCell.Tab.0.center/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174147" />
-    <state width="1419" height="190" key="GridCell.Tab.0.left" timestamp="1578318764879">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state width="1419" height="208" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1583147271647" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left" timestamp="1583147271646">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="251" key="GridCell.Tab.0.left/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374029" />
     <state width="1419" height="190" key="GridCell.Tab.0.left/0.23.1440.820@0.23.1440.820" timestamp="1578318764879" />
     <state width="1899" height="251" key="GridCell.Tab.0.left/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174146" />
-    <state width="1419" height="190" key="GridCell.Tab.0.right" timestamp="1578318764880">
-      <screen x="0" y="23" width="1440" height="820" />
+    <state width="1419" height="208" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1583147271646" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right" timestamp="1583147271648">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.820/-228.-1057.1920.1057@-228.-1057.1920.1057" timestamp="1576402374031" />
     <state width="1419" height="190" key="GridCell.Tab.0.right/0.23.1440.820@0.23.1440.820" timestamp="1578318764880" />
     <state width="1899" height="251" key="GridCell.Tab.0.right/0.23.1440.877/-228.-1057.1920.1000@-228.-1057.1920.1000" timestamp="1576402174148" />
+    <state width="1419" height="208" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1583147271648" />
     <state x="221" y="81" key="SettingsEditor" timestamp="1578135793753">
       <screen x="0" y="23" width="1440" height="820" />
     </state>

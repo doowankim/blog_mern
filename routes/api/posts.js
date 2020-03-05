@@ -38,7 +38,7 @@ const upload = multer({
 // @desc Tests posts route
 // @access Private
 
-router.post('/', authCheck, upload.single('attachedfile'), (req, res) => {
+router.post('/', authCheck, (req, res) => {
     const {errors, isValid} = validatePostInput(req.body);
     if(!isValid){
         return res.json(errors);
@@ -46,9 +46,9 @@ router.post('/', authCheck, upload.single('attachedfile'), (req, res) => {
     const newPost = new postModel({
         text: req.body.text,
         name: req.user.name,
+        title: req.body.title,
         avatar: req.user.avatar,
-        user: req.user.id,
-        attachedfile: req.file.path
+        user: req.user.id
     });
 
     newPost
